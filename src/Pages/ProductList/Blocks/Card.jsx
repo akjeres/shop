@@ -42,6 +42,7 @@ export const Card = (props) => {
                 <Link to="/details">
                     <Meta title="Back Side" />
                 </Link>
+                <TextBold>World</TextBold>
             </CardComponent>
         </ReactCardFlip>
     );
