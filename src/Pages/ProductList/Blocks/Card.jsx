@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card as CardComponent } from 'antd';
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
+import { TextBold } from "./styles";
 
 const { Meta } = CardComponent;
 
@@ -27,6 +28,7 @@ export const Card = (props) => {
                 <Link to="/details">
                     <Meta title={ el.name } />
                 </Link>
+                <TextBold>Hello</TextBold>
             </CardComponent>
             <CardComponent
                 hoverable
