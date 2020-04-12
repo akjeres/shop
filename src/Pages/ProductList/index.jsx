@@ -1,8 +1,7 @@
 import React from "react";
-import { Layout, Row, Col } from 'antd';
-import { Card, HeaderComponent } from './Blocks';
+import { Row, Col } from 'antd';
+import { Card } from './Blocks';
 
-const { Header, Footer, Content } = Layout;
 const data = [
     {
         id: 1,
@@ -30,20 +29,8 @@ export const ProductList = (el) => {
       );
   };
   return (
-      <Layout style={styles.layoutStyle}>
-          <HeaderComponent />
-          <Content>
-              <Row justify="space-around">
-                  { data.map(card => renderCards(card)) }
-              </Row>
-          </Content>
-          <Footer>Footer</Footer>
-      </Layout>
+      <Row justify="space-around">
+          { data.map(card => renderCards(card)) }
+      </Row>
   );
-};
-
-const styles = {
-    layoutStyle: {
-        minHeight: '100vh',
-    }
 };

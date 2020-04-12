@@ -9,7 +9,7 @@ export const HeaderComponent = () => {
             ghost={ false }
             onBack={() => window.history.back() }
             title="Shop Awesome"
-            backIcon={ <HomeOutlined /> }
+            backIcon={ <HomeOutlined key="home-icon" /> }
             className="site-page-header"
             extra={
                 [
@@ -18,7 +18,7 @@ export const HeaderComponent = () => {
                             type="primary"
                             shape="circle"
                         >
-                            <ShoppingCartOutlined />
+                            <ShoppingCartOutlined key="cart-icon" />
                         </Button>
                     </Link>,
                 ]
