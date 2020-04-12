@@ -25,7 +25,7 @@ export const Card = (props) => {
                 }
                 onClick={ onChangeFlipped }
             >
-                <Link to="/details">
+                <Link to="/cart">
                     <Meta title={ el.name } />
                 </Link>
                 <TextBold>Hello</TextBold>
@@ -39,7 +39,7 @@ export const Card = (props) => {
                 }
                 onClick={ onChangeFlipped }
             >
-                <Link to="/details">
+                <Link to="/cart">
                     <Meta title="Back Side" />
                 </Link>
                 <TextBold>World</TextBold>

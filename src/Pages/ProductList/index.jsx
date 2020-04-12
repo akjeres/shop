@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Row, Col } from 'antd';
-import { Card } from './Blocks';
+import { Card, HeaderComponent } from './Blocks';
 
 const { Header, Footer, Content } = Layout;
 const data = [
@@ -31,7 +31,7 @@ export const ProductList = (el) => {
   };
   return (
       <Layout style={styles.layoutStyle}>
-          <Header>Header</Header>
+          <HeaderComponent />
           <Content>
               <Row justify="space-around">
                   { data.map(card => renderCards(card)) }
