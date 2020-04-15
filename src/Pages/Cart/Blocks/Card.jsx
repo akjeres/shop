@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Card as CardComponent } from 'antd';
+import {Button, Card as CardComponent} from 'antd';
 import { Link } from "react-router-dom";
 
 const { Meta } = CardComponent;
 
 export const Card = (props) => {
-    const { el } = props;
+    const { el, increase, decrease } = props;
 
-    console.log(el);
     return (
         <Link to="/cart">
             <CardComponent
@@ -17,11 +16,19 @@ export const Card = (props) => {
                     <img alt={ el.name } src={ el.image }
                          style={ styles.imageStyle }/>
                 }
+                actions={[
+                    <Button onClick={ decrease }>-</Button>,
+                    <Button type="link" disabled style={{
+                        cursor: 'default'
+                    }}>{ el.quantity }</Button>,
+                    <Button onClick={ increase }>+</Button>,
+                ]}
             >
 
-                    <Meta title={ el.name } />
-                    <div>Price: { el.price }</div>
-                    <div>Amount: { el.quantity }</div>
+                    <Meta
+                        title={ el.name }
+                        description={ `Price: ${el.price}` }
+                    />
             </CardComponent>
         </Link>
     );

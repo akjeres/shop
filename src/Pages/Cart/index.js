@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Row, Col, Typography } from 'antd';
 import { DollarCircleOutlined } from '@ant-design/icons';
 import { Card } from "./Blocks";
@@ -29,25 +29,58 @@ const dataCart = [
 ];
 
 export const Cart = ({ el }) => {
+    const [totalCart, changeTotal] = useState(dataCart);
+    const increaseValue = (el) => {
+        changeTotal(totalCart.map(item => {
+            if (el.id !== item.id) return item;
+
+            const result = Object.assign({}, item);
+            result.quantity = 1 + item.quantity;
+            return result;
+        }));
+    };
+    const decreaseValue = (el) => {
+        changeTotal(totalCart.map(item => {
+            if (el.id !== item.id) return item;
+
+            const result = Object.assign({}, item);
+            result.quantity = item.quantity - 1;
+            return result;
+        }));
+    };
     const renderCards = (element) => {
-        return (
+        const result = (element.quantity) ? (
             <Col span={4} key={element.id}>
-                <Card el={ element }/>
+                <Card
+                    el={ element }
+                    increase={ () => increaseValue(element) }
+                    decrease={ () => decreaseValue(element) }
+                />
             </Col>
-        );
+        ) : null;
+        return result;
+    };
+
+    const getTotalValue = (array) => {
+        let value = 0;
+        array.forEach((item) => {
+            const { price, quantity } = item;
+            value += (price * quantity);
+        });
+        return value;
     };
 
     return (
         <>
             <Row justify="space-around">
-                { dataCart.map(el => renderCards(el)) }
+                { totalCart.map(el => renderCards(el)) }
             </Row>
             <Row justify="center">
                 <Col span={4}>
                     <Paragraph style={ style.totatStyle } >
                         <DollarCircleOutlined />
                         &nbsp;Total:&nbsp;
-                        <span>0</span>
+                        <span>{ getTotalValue(totalCart) }</span>
                     </Paragraph>
                 </Col>
             </Row>
