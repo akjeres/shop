@@ -13,7 +13,7 @@ const { Footer, Content } = Layout;
 
 function App() {
   return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
           <Switch>
               <Layout style={styles.layoutStyle}>
                   <HeaderComponent />
