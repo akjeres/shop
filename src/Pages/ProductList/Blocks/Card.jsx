@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card as CardComponent } from 'antd';
+import {Button, Card as CardComponent} from 'antd';
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
 import { TextBold } from "./styles";
@@ -10,7 +10,6 @@ export const Card = (props) => {
     const { el } = props;
     const [isFlipped, changeFlipped] = useState(false);
     const onChangeFlipped = () => {
-        console.log('isFlipped: ', isFlipped);
         changeFlipped( !isFlipped );
     };
 
@@ -26,9 +25,11 @@ export const Card = (props) => {
                 onClick={ onChangeFlipped }
             >
                 <Link to="/cart">
-                    <Meta title={ el.name } />
+                    <Meta
+                        title={ el.name }
+                        description={ `Price: ${el.price}` }
+                    />
                 </Link>
-                <TextBold>Hello</TextBold>
             </CardComponent>
             <CardComponent
                 hoverable
@@ -40,9 +41,11 @@ export const Card = (props) => {
                 onClick={ onChangeFlipped }
             >
                 <Link to="/cart">
-                    <Meta title="Back Side" />
+                    <Meta
+                        title="Back Side"
+                        description={ <TextBold>Hello</TextBold> }
+                    />
                 </Link>
-                <TextBold>World</TextBold>
             </CardComponent>
         </ReactCardFlip>
     );
